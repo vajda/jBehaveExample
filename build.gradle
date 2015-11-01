@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.7.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'jBehaveExample'
+    version =  '0.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    testCompile 'com.jayway.restassured:rest-assured:2.4.1'
+    testCompile "org.springframework.boot:spring-boot-starter-test:1.2.7.RELEASE"
+    testCompile("org.jbehave:jbehave-core:4.0.4")
+    testCompile("org.jbehave:jbehave-spring:4.0.4")
+    testCompile("de.codecentric:jbehave-junit-runner:1.2.0")
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.8'
+}
